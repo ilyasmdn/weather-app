@@ -2,6 +2,8 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import WeatherDisplay from "./components/WeatherDisplay"
 import WeatherSearch from "./components/WeatherSearch"
+import { fetchWeather } from "./utils/fetchWeather"
+import { useState } from "react"
 
 function App() {
 
@@ -16,13 +18,17 @@ function App() {
     error: string;
   };
 
-  const weatherData: WeatherData | null = null as WeatherData | null;
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const handleWeatherDataChange = async (city: string) => {
+    const data = await fetchWeather(city);
+    setWeatherData(data);
+  };
   
   return (
     <>
       <Header />
       <main className="flex-grow">
-        <WeatherSearch />
+        <WeatherSearch onSearch={handleWeatherDataChange} />
         {weatherData ? (
           <WeatherDisplay
             city={weatherData.city}

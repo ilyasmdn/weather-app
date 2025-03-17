@@ -1,12 +1,21 @@
 import { useState } from "react";
 
-const WeatherSearch = () => {
+interface WeatherSearchProps {
+    onSearch: (city: string) => void;
+}
+
+const WeatherSearch: React.FC<WeatherSearchProps> = ({ onSearch }) => {
+
 
     const [city, setCity] = useState('');
 
     const handleChangeCity = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCity(e.target.value)
     }
+
+    const handleSearchClick = async () => {
+        onSearch(city);
+      };
 
   return (
     <div className="w-full p-6">
@@ -20,6 +29,7 @@ const WeatherSearch = () => {
                 className="w-full p-2 border border-gray-300 rounded-lg"
             />
             <button
+            onClick={handleSearchClick}
                 className="w-32 p-2 bg-blue-800 text-white rounded-lg cursor-pointer hover:bg-blue-900 transition duration-300"
             >
                 Search
