@@ -19,7 +19,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   isLoading,
   error
 }) => {
-  
+
   if (!city)
     return;
 
@@ -30,13 +30,13 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
     return <div>Error: {error}</div>;
 
   return (
-    <div className="weather-display text-center bg-white border border-gray-300 p-6 rounded-lg shadow-lg max-w-sm mx-auto">
-      <h2 className="text-2xl font-semibold mb-2">{city}</h2>
+    <div className="weather-display text-center bg-blue-800 border border-gray-300 p-6 rounded-lg shadow-lg max-w-sm mx-auto">
+      <h2 className="text-white text-2xl font-semibold mb-2">{city}</h2>
       <img src={icon} alt={description} className="w-24 h-24 mx-auto mb-4" />
-      <p className="text-xl font-medium text-gray-700 mb-2">{description}</p>
-      <p className="text-3xl font-bold mb-2">{temperature}°C</p>
-      {humidity && <p className="text-sm text-gray-500">Humidity: {humidity}%</p>}
-      {windSpeed && <p className="text-sm text-gray-500">Wind Speed: {windSpeed} km/h</p>}
+      <p className="text-xl font-medium text-gray-200 mb-2">{description}</p>
+      <p className="text-gray-200 text-3xl font-bold mb-2">{temperature}°C</p>
+      {humidity && <p className="text-sm text-gray-400">Humidity: {humidity}%</p>}
+      {windSpeed && <p className="text-sm text-gray-400">Wind Speed: {windSpeed} km/h</p>}
     </div>
   );
 

@@ -18,7 +18,7 @@ const WeatherSearch: React.FC<WeatherSearchProps> = ({ onSearch }) => {
       };
 
   return (
-    <div className="w-full p-6">
+    <div className="w-full py-8 px-16">
         <h2 className="py-4 text-3xl font-bold text-center text-gray-800">What city you are currently in ?</h2>
         <div className="flex gap-4">
             <input 
