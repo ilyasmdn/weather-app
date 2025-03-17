@@ -2,9 +2,9 @@ import icon from '../assets/icon.png'
 
 const Header = () => {
   return (
-    <header className='flex items-center justify-center gap-4'>
-        <img src={icon} className='h-15' />
-        <p>Weather App</p>
+    <header className='sticky top-0 flex py-2 items-center justify-center gap-4 border-b border-gray-300'>
+        <img src={icon} className='h-12' />
+        <p className='font-medium'>Weather App</p>
     </header>
   )
 }
