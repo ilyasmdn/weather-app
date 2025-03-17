@@ -19,6 +19,10 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   isLoading,
   error
 }) => {
+  
+  if (!city)
+    return;
+
   if (isLoading)
     return <div>Loading...</div>;
 

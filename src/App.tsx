@@ -5,32 +5,39 @@ import WeatherSearch from "./components/WeatherSearch"
 
 function App() {
 
-  const weatherData = {
-    city: "London",
-    temperature: 22, // In Celsius
-    description: "Clear sky",
-    icon: "https://openweathermap.org/img/wn/01d.png", // You can replace it with any valid weather icon URL
-    humidity: 65, // Optional
-    windSpeed: 15, // Optional
-    isLoading: false, // Set to true if you're still fetching data
-    error: "", // Leave empty or set an error message for testing
+  type WeatherData = {
+    city: string;
+    temperature: number;
+    description: string;
+    icon: string;
+    humidity: number;
+    windSpeed: number;
+    isLoading: boolean;
+    error: string;
   };
-  
 
+  const weatherData: WeatherData | null = null as WeatherData | null;
+  
   return (
     <>
       <Header />
-      <WeatherSearch />
-      <WeatherDisplay
-        city={weatherData.city}
-        temperature={weatherData.temperature}
-        description={weatherData.description}
-        icon={weatherData.icon}
-        humidity={weatherData.humidity}
-        windSpeed={weatherData.windSpeed}
-        isLoading={weatherData.isLoading}
-        error={weatherData.error}
-      />
+      <main className="flex-grow">
+        <WeatherSearch />
+        {weatherData ? (
+          <WeatherDisplay
+            city={weatherData.city}
+            temperature={weatherData.temperature}
+            description={weatherData.description}
+            icon={weatherData.icon}
+            humidity={weatherData.humidity}
+            windSpeed={weatherData.windSpeed}
+            isLoading={weatherData.isLoading}
+            error={weatherData.error}
+          />
+        ) : (
+          <p className="text-center text-gray-500">No weather data available.</p>
+        )}
+      </main>
       <Footer />
     </>
   )
