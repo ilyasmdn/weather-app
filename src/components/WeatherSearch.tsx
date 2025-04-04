@@ -18,19 +18,19 @@ const WeatherSearch: React.FC<WeatherSearchProps> = ({ onSearch }) => {
       };
 
   return (
-    <div className="w-full py-8 px-16">
-        <h2 className="py-4 text-3xl font-bold text-center text-gray-800">What city you are currently in ?</h2>
-        <div className="flex gap-4">
+    <div className="w-full pt-4 pb-8 px-16">
+        <h2 className="py-4 text-3xl font-bold text-center text-text">What city you are currently in?</h2>
+        <div className="mt-3 relative max-w-2xl mx-auto">
             <input 
                 type="text" 
                 value={city} 
                 onChange={(e) => handleChangeCity(e)}
                 placeholder="Enter your city"
-                className="w-full p-2 border border-gray-300 rounded-lg"
+                className="w-full text-text p-2.5 border border-border rounded-xl outline-none"
             />
             <button
             onClick={handleSearchClick}
-                className="w-32 p-2 bg-blue-800 text-white rounded-lg cursor-pointer hover:bg-blue-900 transition duration-300"
+                className="absolute right-0 top-0 p-2.5 w-22 border border-border bg-primary text-text rounded-xl cursor-pointer hover:bg-primary/50 transition"
             >
                 Search
             </button>

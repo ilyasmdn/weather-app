@@ -14,14 +14,42 @@ function App() {
     icon: string;
     humidity: number;
     windSpeed: number;
-    isLoading: boolean;
     error: string;
   };
 
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+
+  const [isLoading, setLoading] = useState<boolean>(false)
+  
   const handleWeatherDataChange = async (city: string) => {
-    const data = await fetchWeather(city);
-    setWeatherData(data);
+    setLoading(true); // Set loading to true before fetching
+    try {
+      const data = await fetchWeather(city);
+      
+      // Assuming fetchWeather returns data that matches the WeatherData shape
+      setWeatherData({
+        city: city,
+        temperature: data.temperature,
+        description: data.description,
+        icon: data.icon,
+        humidity: data.humidity,
+        windSpeed: data.windSpeed,
+        error: "" // Clear any previous errors
+      });
+    } catch (error) {
+      // Handle error if fetch fails
+      setWeatherData({
+        city: "",
+        temperature: 0,
+        description: "",
+        icon: "",
+        humidity: 0,
+        windSpeed: 0,
+        error: "Failed to fetch weather data."
+      });
+    } finally {
+      setLoading(false);
+    }
   };
   
   return (
@@ -37,11 +65,11 @@ function App() {
             icon={weatherData.icon}
             humidity={weatherData.humidity}
             windSpeed={weatherData.windSpeed}
-            isLoading={weatherData.isLoading}
+            isLoading={isLoading}
             error={weatherData.error}
           />
         ) : (
-          <p className="text-center text-gray-500">No weather data available.</p>
+          <p className="text-center text-gray-300">No weather data available.</p>
         )}
       </main>
       <Footer />

@@ -15,10 +15,9 @@ export async function fetchWeather(city: string) {
         city: data.name,
         temperature: data.main.temp,
         description: data.weather[0].description,
-        icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`,
+        icon: data.weather[0].main,
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
-        isLoading: false,
         error: ""
       };
     } catch (error) {
@@ -29,8 +28,7 @@ export async function fetchWeather(city: string) {
         description: "",
         icon: "",
         humidity: 0,
-        windSpeed: 0,
-        isLoading: false,
+        windSpeed: 0
       };    
     }
 }
