@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="flex flex-col items-center justify-center mt-10 p-8">
-      <p className="text-text">&copy; {new Date().getFullYear()} WeatherApp</p>
+      <p className="text-text">&copy; {new Date().getFullYear()} WeatherApp - Made by <a className="underline font-medium text-text" target="_blank" href="https://ilyasmdn.github.io/portfolio/">Ilyas Dev</a></p>
       <p className="text-text">
         Data from &nbsp;
         <a 
